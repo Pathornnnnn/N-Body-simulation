@@ -650,14 +650,13 @@ int main(int argc, char *argv[]) {
            "%lf, threads: %d\n",
            start, end, dt, n_steps, n_ents, BIG_G, thread_count);
 
-    clock_gettime(CLOCK_REALTIME, &s);
+    double t_start = omp_get_wtime();
     propagation(ents, n_ents, n_steps, dt, argv[5]);
-    clock_gettime(CLOCK_REALTIME, &e);
+    double t_end = omp_get_wtime();
 
     printf("Completed. Output file: %s\n", argv[5]);
 
-    double time_spent =
-        (e.tv_sec - s.tv_sec) + (e.tv_nsec - s.tv_nsec) / BILLION;
+    double time_spent = t_end - t_start;
 
     printf("Elapsed wall time: %f s\n", time_spent);
 
