@@ -1,0 +1,267 @@
+== warm-up (not recorded) ==
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+steps=27
+== measured runs ==
+run 1  1x N=5000 threads=1  21.283539 s
+run 1  1x N=5000 threads=2  10.938502 s
+run 1  1x N=5000 threads=3  7.485543 s
+run 1  1x N=5000 threads=4  5.618840 s
+run 1  1x N=5000 threads=5  4.486034 s
+run 1  1x N=5000 threads=6  3.862041 s
+run 1  1x N=5000 threads=7  3.395457 s
+run 1  1x N=5000 threads=8  2.904529 s
+run 1  2x N=10000 threads=1  57.390984 s
+run 1  2x N=10000 threads=2  29.155218 s
+run 1  2x N=10000 threads=3  19.629116 s
+run 1  2x N=10000 threads=4  14.714113 s
+run 1  2x N=10000 threads=5  11.844624 s
+run 1  2x N=10000 threads=6  10.098368 s
+run 1  2x N=10000 threads=7  8.757253 s
+run 1  2x N=10000 threads=8  8.087782 s
+run 1  4x N=20000 threads=1  147.099745 s
+run 1  4x N=20000 threads=2  70.724639 s
+run 1  4x N=20000 threads=3  51.217121 s
+run 1  4x N=20000 threads=4  38.647484 s
+run 1  4x N=20000 threads=5  29.914654 s
+run 1  4x N=20000 threads=6  25.957112 s
+run 1  4x N=20000 threads=7  20.911501 s
+run 1  4x N=20000 threads=8  18.620506 s
+run 2  1x N=5000 threads=1  21.971964 s
+run 2  1x N=5000 threads=2  11.319747 s
+run 2  1x N=5000 threads=3  7.709709 s
+run 2  1x N=5000 threads=4  5.866158 s
+run 2  1x N=5000 threads=5  4.695198 s
+run 2  1x N=5000 threads=6  3.868853 s
+run 2  1x N=5000 threads=7  3.612546 s
+run 2  1x N=5000 threads=8  3.029090 s
+run 2  2x N=10000 threads=1  60.789916 s
+run 2  2x N=10000 threads=2  29.858020 s
+run 2  2x N=10000 threads=3  20.389886 s
+run 2  2x N=10000 threads=4  15.420620 s
+run 2  2x N=10000 threads=5  11.816303 s
+run 2  2x N=10000 threads=6  10.152993 s
+run 2  2x N=10000 threads=7  9.015469 s
+run 2  2x N=10000 threads=8  7.527276 s
+run 2  4x N=20000 threads=1  150.959711 s
+run 2  4x N=20000 threads=2  74.369358 s
+run 2  4x N=20000 threads=3  48.571787 s
+run 2  4x N=20000 threads=4  35.890780 s
+run 2  4x N=20000 threads=5  28.544353 s
+run 2  4x N=20000 threads=6  24.716408 s
+run 2  4x N=20000 threads=7  20.908014 s
+run 2  4x N=20000 threads=8  18.391831 s
+run 3  1x N=5000 threads=1  21.475974 s
+run 3  1x N=5000 threads=2  10.919117 s
+run 3  1x N=5000 threads=3  7.361564 s
+run 3  1x N=5000 threads=4  5.682547 s
+run 3  1x N=5000 threads=5  4.575710 s
+run 3  1x N=5000 threads=6  3.707041 s
+run 3  1x N=5000 threads=7  3.287829 s
+run 3  1x N=5000 threads=8  3.085912 s
+run 3  2x N=10000 threads=1  59.657942 s
+run 3  2x N=10000 threads=2  30.024262 s
+run 3  2x N=10000 threads=3  20.397626 s
+run 3  2x N=10000 threads=4  14.694613 s
+run 3  2x N=10000 threads=5  11.550936 s
+run 3  2x N=10000 threads=6  9.932601 s
+run 3  2x N=10000 threads=7  9.374081 s
+run 3  2x N=10000 threads=8  8.093907 s
+run 3  4x N=20000 threads=1  150.668033 s
+run 3  4x N=20000 threads=2  75.107249 s
+run 3  4x N=20000 threads=3  48.945257 s
+run 3  4x N=20000 threads=4  36.512538 s
+run 3  4x N=20000 threads=5  29.678891 s
+run 3  4x N=20000 threads=6  25.235749 s
+run 3  4x N=20000 threads=7  21.595845 s
+run 3  4x N=20000 threads=8  19.190604 s
+run 4  1x N=5000 threads=1  21.877030 s
+run 4  1x N=5000 threads=2  11.403554 s
+run 4  1x N=5000 threads=3  7.471334 s
+run 4  1x N=5000 threads=4  5.693019 s
+run 4  1x N=5000 threads=5  4.465167 s
+run 4  1x N=5000 threads=6  3.669364 s
+run 4  1x N=5000 threads=7  3.544590 s
+run 4  1x N=5000 threads=8  3.124140 s
+run 4  2x N=10000 threads=1  60.759127 s
+run 4  2x N=10000 threads=2  30.188111 s
+run 4  2x N=10000 threads=3  20.404951 s
+run 4  2x N=10000 threads=4  15.836961 s
+run 4  2x N=10000 threads=5  11.183756 s
+run 4  2x N=10000 threads=6  9.418060 s
+run 4  2x N=10000 threads=7  8.543335 s
+run 4  2x N=10000 threads=8  7.870241 s
+run 4  4x N=20000 threads=1  145.758444 s
+run 4  4x N=20000 threads=2  73.952004 s
+run 4  4x N=20000 threads=3  49.600188 s
+run 4  4x N=20000 threads=4  36.969972 s
+run 4  4x N=20000 threads=5  29.689745 s
+run 4  4x N=20000 threads=6  24.736176 s
+run 4  4x N=20000 threads=7  21.355442 s
+run 4  4x N=20000 threads=8  19.876426 s
+run 5  1x N=5000 threads=1  22.847216 s
+run 5  1x N=5000 threads=2  11.299057 s
+run 5  1x N=5000 threads=3  7.374311 s
+run 5  1x N=5000 threads=4  5.768294 s
+run 5  1x N=5000 threads=5  4.774200 s
+run 5  1x N=5000 threads=6  3.885041 s
+run 5  1x N=5000 threads=7  3.499326 s
+run 5  1x N=5000 threads=8  3.224887 s
+run 5  2x N=10000 threads=1  61.302152 s
+run 5  2x N=10000 threads=2  32.154768 s
+run 5  2x N=10000 threads=3  21.144620 s
+run 5  2x N=10000 threads=4  15.495758 s
+run 5  2x N=10000 threads=5  12.344099 s
+run 5  2x N=10000 threads=6  10.353163 s
+run 5  2x N=10000 threads=7  8.983596 s
+run 5  2x N=10000 threads=8  7.934426 s
+run 5  4x N=20000 threads=1  152.415905 s
+run 5  4x N=20000 threads=2  76.288083 s
+run 5  4x N=20000 threads=3  50.960421 s
+run 5  4x N=20000 threads=4  38.157401 s
+run 5  4x N=20000 threads=5  30.406813 s
+run 5  4x N=20000 threads=6  26.842924 s
+run 5  4x N=20000 threads=7  23.546159 s
+run 5  4x N=20000 threads=8  19.039205 s
+run 6  1x N=5000 threads=1  21.601131 s
+run 6  1x N=5000 threads=2  11.509564 s
+run 6  1x N=5000 threads=3  7.989841 s
+run 6  1x N=5000 threads=4  5.752089 s
+run 6  1x N=5000 threads=5  4.804590 s
+run 6  1x N=5000 threads=6  4.066706 s
+run 6  1x N=5000 threads=7  3.646352 s
+run 6  1x N=5000 threads=8  3.085600 s
+run 6  2x N=10000 threads=1  62.037044 s
+run 6  2x N=10000 threads=2  30.280145 s
+run 6  2x N=10000 threads=3  19.827715 s
+run 6  2x N=10000 threads=4  15.157242 s
+run 6  2x N=10000 threads=5  13.098571 s
+run 6  2x N=10000 threads=6  10.653071 s
+run 6  2x N=10000 threads=7  9.306369 s
+run 6  2x N=10000 threads=8  7.888582 s
+run 6  4x N=20000 threads=1  151.509460 s
+run 6  4x N=20000 threads=2  76.341637 s
+run 6  4x N=20000 threads=3  49.820192 s
+run 6  4x N=20000 threads=4  38.048353 s
+run 6  4x N=20000 threads=5  30.844780 s
+run 6  4x N=20000 threads=6  25.078981 s
+run 6  4x N=20000 threads=7  21.081184 s
+run 6  4x N=20000 threads=8  19.153803 s
+run 7  1x N=5000 threads=1  21.264085 s
+run 7  1x N=5000 threads=2  11.453718 s
+run 7  1x N=5000 threads=3  7.536930 s
+run 7  1x N=5000 threads=4  5.694071 s
+run 7  1x N=5000 threads=5  4.474030 s
+run 7  1x N=5000 threads=6  4.081585 s
+run 7  1x N=5000 threads=7  3.583918 s
+run 7  1x N=5000 threads=8  2.957766 s
+run 7  2x N=10000 threads=1  58.594518 s
+run 7  2x N=10000 threads=2  29.898616 s
+run 7  2x N=10000 threads=3  20.237945 s
+run 7  2x N=10000 threads=4  14.651522 s
+run 7  2x N=10000 threads=5  12.044130 s
+run 7  2x N=10000 threads=6  10.012485 s
+run 7  2x N=10000 threads=7  8.803863 s
+run 7  2x N=10000 threads=8  7.676003 s
+run 7  4x N=20000 threads=1  147.533397 s
+run 7  4x N=20000 threads=2  79.218741 s
+run 7  4x N=20000 threads=3  52.258973 s
+run 7  4x N=20000 threads=4  40.220304 s
+run 7  4x N=20000 threads=5  31.760002 s
+run 7  4x N=20000 threads=6  27.013215 s
+run 7  4x N=20000 threads=7  22.822019 s
+run 7  4x N=20000 threads=8  19.467318 s
+run 8  1x N=5000 threads=1  22.581951 s
+run 8  1x N=5000 threads=2  11.975162 s
+run 8  1x N=5000 threads=3  8.121803 s
+run 8  1x N=5000 threads=4  5.946896 s
+run 8  1x N=5000 threads=5  4.722386 s
+run 8  1x N=5000 threads=6  3.945958 s
+run 8  1x N=5000 threads=7  3.607774 s
+run 8  1x N=5000 threads=8  3.066176 s
+run 8  2x N=10000 threads=1  63.750753 s
+run 8  2x N=10000 threads=2  33.774092 s
+run 8  2x N=10000 threads=3  21.773463 s
+run 8  2x N=10000 threads=4  16.921513 s
+run 8  2x N=10000 threads=5  13.175775 s
+run 8  2x N=10000 threads=6  11.313304 s
+run 8  2x N=10000 threads=7  9.785348 s
+run 8  2x N=10000 threads=8  8.388344 s
+run 8  4x N=20000 threads=1  167.921762 s
+run 8  4x N=20000 threads=2  80.055348 s
+run 8  4x N=20000 threads=3  54.670071 s
+run 8  4x N=20000 threads=4  41.221118 s
+run 8  4x N=20000 threads=5  31.813947 s
+run 8  4x N=20000 threads=6  26.015954 s
+run 8  4x N=20000 threads=7  22.039244 s
+run 8  4x N=20000 threads=8  20.269650 s
+run 9  1x N=5000 threads=1  21.928279 s
+run 9  1x N=5000 threads=2  11.650317 s
+run 9  1x N=5000 threads=3  7.941112 s
+run 9  1x N=5000 threads=4  5.851086 s
+run 9  1x N=5000 threads=5  4.585815 s
+run 9  1x N=5000 threads=6  3.897255 s
+run 9  1x N=5000 threads=7  3.359079 s
+run 9  1x N=5000 threads=8  2.918401 s
+run 9  2x N=10000 threads=1  61.581675 s
+run 9  2x N=10000 threads=2  31.901809 s
+run 9  2x N=10000 threads=3  22.709955 s
+run 9  2x N=10000 threads=4  16.924022 s
+run 9  2x N=10000 threads=5  13.355314 s
+run 9  2x N=10000 threads=6  11.115075 s
+run 9  2x N=10000 threads=7  9.549989 s
+run 9  2x N=10000 threads=8  8.552150 s
+run 9  4x N=20000 threads=1  161.448591 s
+run 9  4x N=20000 threads=2  80.577980 s
+run 9  4x N=20000 threads=3  55.275977 s
+run 9  4x N=20000 threads=4  40.551480 s
+run 9  4x N=20000 threads=5  31.952485 s
+run 9  4x N=20000 threads=6  26.849289 s
+run 9  4x N=20000 threads=7  23.275909 s
+run 9  4x N=20000 threads=8  20.594009 s
+run 10  1x N=5000 threads=1  22.876151 s
+run 10  1x N=5000 threads=2  12.445141 s
+run 10  1x N=5000 threads=3  8.249622 s
+run 10  1x N=5000 threads=4  6.318354 s
+run 10  1x N=5000 threads=5  5.244952 s
+run 10  1x N=5000 threads=6  4.248893 s
+run 10  1x N=5000 threads=7  3.706219 s
+run 10  1x N=5000 threads=8  3.358476 s
+run 10  2x N=10000 threads=1  65.748778 s
+run 10  2x N=10000 threads=2  34.442306 s
+run 10  2x N=10000 threads=3  22.446810 s
+run 10  2x N=10000 threads=4  17.318421 s
+run 10  2x N=10000 threads=5  13.531334 s
+run 10  2x N=10000 threads=6  11.269081 s
+run 10  2x N=10000 threads=7  9.869572 s
+run 10  2x N=10000 threads=8  8.410746 s
+run 10  4x N=20000 threads=1  164.540645 s
+run 10  4x N=20000 threads=2  85.240129 s
+run 10  4x N=20000 threads=3  57.383159 s
+run 10  4x N=20000 threads=4  42.993010 s
+run 10  4x N=20000 threads=5  32.872838 s
+run 10  4x N=20000 threads=6  27.673516 s
+run 10  4x N=20000 threads=7  24.353767 s
+run 10  4x N=20000 threads=8  20.169026 s
+done -> results/times.csv
