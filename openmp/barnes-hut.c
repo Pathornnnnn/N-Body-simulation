@@ -527,6 +527,12 @@ void destroy_mutex(Octtree *tree) {
  * @param dt        Time interval between one step and the next
  * @param *output    Output file name for simulation results (compile with -DRESULTS)
  */
+#ifdef PHASES
+#define LAP(x) _Pragma("omp master") { double _now = omp_get_wtime(); x += _now - t0; t0 = _now; }
+#else
+#define LAP(x)
+#endif
+
 void propagation(Entity ents[], int ents_sz, int n_steps, float dt,
                  const char *output) {
     Octtree tree;
@@ -556,6 +562,9 @@ void propagation(Entity ents[], int ents_sz, int n_steps, float dt,
     }
 #endif
 
+#ifdef PHASES
+    double t0 = 0, t_move = 0, t_bbox = 0, t_build = 0, t_com = 0, t_acc = 0;
+#endif
 #   pragma omp parallel num_threads(thread_count)
     {
         init_mutex(&tree);
@@ -563,6 +572,10 @@ void propagation(Entity ents[], int ents_sz, int n_steps, float dt,
         add_ents(&tree, ents, ents_sz);
         center_of_mass(&tree);
         get_acceleration(&tree, acc, ents_sz);
+#ifdef PHASES
+#       pragma omp master
+        t0 = omp_get_wtime();
+#endif
 
         for (int t = 0; t < n_steps; t++) {
             // 1/2 kick
@@ -597,10 +610,15 @@ void propagation(Entity ents[], int ents_sz, int n_steps, float dt,
                 init_node(&tree);
             }
 
+            LAP(t_move)
             get_bounding_box(ents, ents_sz, &tree.max, loc_max);
+            LAP(t_bbox)
             add_ents(&tree, ents, ents_sz);
+            LAP(t_build)
             center_of_mass(&tree);
+            LAP(t_com)
             get_acceleration(&tree, acc, ents_sz);
+            LAP(t_acc)
 
             // 2nd 1/2 kick
 #           pragma omp for
@@ -609,9 +627,14 @@ void propagation(Entity ents[], int ents_sz, int n_steps, float dt,
                 ents[i].vel.y += acc[i].y * dt / 2.0;
                 ents[i].vel.z += acc[i].z * dt / 2.0;
             }
+            LAP(t_move)
         }
         destroy_mutex(&tree);
     } // pragma
+#ifdef PHASES
+    printf("PHASES move=%f bbox=%f build=%f com=%f acc=%f\n", t_move, t_bbox,
+           t_build, t_com, t_acc);
+#endif
 
 #ifdef RESULTS
     fclose(fpt);
