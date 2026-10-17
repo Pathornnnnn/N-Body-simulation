@@ -7,9 +7,9 @@ BIN=${BIN:-build/bh-phases-O0}
 END=${END:-0.27}; DT=${DT:-0.01}; RUNS=${RUNS:-3}
 THREADS=${THREADS:-"1 2 4 8"}
 WORKLOADS=${WORKLOADS:-"1x:5000 2x:10000 4x:20000"}
-OUT=${OUT:-results/phases.csv}
+OUT=${OUT:-results/variants/phases-O0.csv}
 export OMP_PROC_BIND=close OMP_PLACES=cores
-mkdir -p inputs results
+mkdir -p inputs "$(dirname "$OUT")"
 echo "workload,threads,run,total,move,bbox,build,com,acc" > "$OUT"
 for r in $(seq 1 "$RUNS"); do
   for w in $WORKLOADS; do for t in $THREADS; do

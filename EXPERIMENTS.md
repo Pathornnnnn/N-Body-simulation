@@ -18,23 +18,49 @@
 ## ขั้นตอนบน server (รันจาก root ของ repo)
 
 ```bash
-scripts/build_variants.sh
-scripts/verify_variants.sh
-mkdir -p inputs && head -n 5000 tests/100k_bodies.csv > inputs/in_5000.csv
-INPUT=inputs/in_5000.csv END=0.1 scripts/verify_variants.sh
+git fetch origin && git checkout experiment-limitations
 tmux new -s bh
-scripts/run_variants.sh
+mkdir -p results/variants
+scripts/build_variants.sh
+scripts/verify_variants.sh 2>&1 | tee results/variants/verify-1k.txt
+mkdir -p inputs && head -n 5000 tests/100k_bodies.csv > inputs/in_5000.csv
+INPUT=inputs/in_5000.csv END=0.1 scripts/verify_variants.sh 2>&1 | tee results/variants/verify-5k.txt
+scripts/run_variants.sh 2>&1 | tee results/variants/run.log
+python3 scripts/compare_variants.py | tee results/variants/summary.md
 scripts/run_phases.sh
-BIN=build/bh-phases-O3 OUT=results/phases-O3.csv scripts/run_phases.sh
-scripts/check_nodes.sh
+BIN=build/bh-phases-O3 OUT=results/variants/phases-O3.csv scripts/run_phases.sh
+python3 scripts/summarize_phases.py results/variants/phases-O0.csv | tee results/variants/phases-O0.md
+python3 scripts/summarize_phases.py results/variants/phases-O3.csv | tee results/variants/phases-O3.md
+scripts/check_nodes.sh 2>&1 | tee results/variants/nodes.txt
 ```
 
-1. `build_variants.sh` สร้าง binary ทั้งหมดใน `build/`
-2. `verify_variants.sh` เทียบตำแหน่งดาวทุก step กับโปรแกรม serial ที่ 1, 4, 8 เธรด ค่า `max|dpos|` ควรเป็น 0 หรือใกล้ 0
-   - สองบรรทัดถัดมาสร้าง input 5,000 ดวง (ไฟล์เดียวกับที่ `run_experiment.sh` ใช้) แล้วตรวจซ้ำที่ขนาดนั้น
-3. `run_variants.sh` รันใน tmux เพราะใช้เวลานาน ผลอยู่ที่ `results/variants/<variant>.csv` แล้วพิมพ์ตารางเปรียบเทียบท้ายสุด
-4. `run_phases.sh` จับเวลาแยกเฟส ผลอยู่ที่ `results/phases.csv` สรุปด้วย `python3 scripts/summarize_phases.py`
-5. `check_nodes.sh` ดูว่าใช้พื้นที่ node ไปเท่าไหร่จาก 5N
+1. สลับไป branch นี้ แล้วเปิด tmux เพราะรันนานหลายชั่วโมง (หลุด ssh ก็ยังรันต่อ กลับเข้าด้วย `tmux attach -t bh`)
+2. `build_variants.sh` สร้าง binary ทั้งหมดใน `build/bh-*` (ไม่ทับ `build/barnes-hut-omp` เดิม)
+3. `verify_variants.sh` เทียบตำแหน่งดาวทุก step กับโปรแกรม serial ที่ 1, 4, 8 เธรด ค่า `max|dpos|` ควรเป็น 0 หรือใกล้ 0
+   - รอบที่สองสร้าง input 5,000 ดวง (ไฟล์เดียวกับที่ `run_experiment.sh` ใช้) แล้วตรวจซ้ำที่ขนาดนั้น
+4. `run_variants.sh` จับเวลาทุก variant แล้ว `compare_variants.py` ทำตารางเปรียบเทียบ
+5. `run_phases.sh` จับเวลาแยกเฟสทั้ง -O0 และ -O3 แล้วสรุปเป็นตาราง
+6. `check_nodes.sh` ดูว่าใช้พื้นที่ node ไปเท่าไหร่จาก 5N
+
+## ผลที่ได้ (อยู่ใน `results/variants/` ทั้งหมด)
+
+| ไฟล์ | มาจาก | เนื้อหา |
+|---|---|---|
+| `orig-O0.csv`, `orig-O3.csv`, `fix-O0.csv`, `dyn-O0.csv`, `all-O3.csv` | run_variants | เวลาดิบทุกรอบ (รูปแบบเดียวกับ `results/times.csv`) |
+| `summary.md` | compare_variants | ตารางเวลาเฉลี่ย, ความแกว่ง, speedup, เทียบกับ orig-O0 |
+| `phases-O0.csv`, `phases-O3.csv`, `phases-O0.md`, `phases-O3.md` | run_phases | เวลาแต่ละเฟสและสัดส่วน |
+| `verify-1k.txt`, `verify-5k.txt` | verify_variants | ผลเทียบกับ serial |
+| `nodes.txt` | check_nodes | จำนวน node ที่ใช้จริงเทียบกับ 5N |
+| `run.log`, `lscpu.txt`, `cacheline.txt` | run_variants | log และข้อมูลเครื่อง |
+
+ไฟล์ตำแหน่งดาวที่ใช้ตรวจอยู่ใน `verify/variants/<ชื่อ input>/` (ไฟล์ใหญ่ ไม่ต้องเก็บ)
+
+**ไม่ทับผลเก่า:** `results/times.csv`, `results/lscpu.txt`, `results/speedup.png`, `results/analysis.png`, `verify/*.csv` เดิมไม่ถูกแตะ
+ทุกอย่างของรอบนี้ลงที่ `results/variants/` กับ `verify/variants/` เท่านั้น
+
+เอาผลกลับมาเครื่องตัวเอง เลือกทางใดทางหนึ่ง:
+- บน server: `git add results/variants && git commit -m "Add variant results" && git push` แล้ว `git pull` ที่เครื่องตัวเอง
+- หรือจากเครื่องตัวเอง: `scp -r <user>@<server>:<path-to-repo>/results/variants ./results/`
 
 ค่าเริ่มต้นของ `run_variants.sh`: END=0.27 (27 steps), THREADS="1 2 4 8", RUNS=5, workload 1x/2x/4x
 ถ้าจะให้ครบแบบการทดลองหลัก: `RUNS=10 THREADS="1 2 3 4 5 6 7 8" scripts/run_variants.sh`

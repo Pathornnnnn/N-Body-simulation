@@ -11,8 +11,11 @@ from collections import defaultdict
 folder = sys.argv[1] if len(sys.argv) > 1 else "results/variants"
 data = {}  # variant -> (workload, threads) -> [times]
 for path in sorted(glob.glob(os.path.join(folder, "*.csv"))):
+    rows = csv.DictReader(open(path))
+    if rows.fieldnames != ["workload", "threads", "run", "time"]:
+        continue  # e.g. phases-*.csv in the same folder
     d = defaultdict(list)
-    for r in csv.DictReader(open(path)):
+    for r in rows:
         d[(r["workload"], int(r["threads"]))].append(float(r["time"]))
     data[os.path.basename(path)[:-4]] = d
 if not data:

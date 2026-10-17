@@ -4,7 +4,7 @@ import csv, sys, statistics as st
 from collections import defaultdict
 P = ["move", "bbox", "build", "com", "acc"]
 d = defaultdict(lambda: defaultdict(list))
-for r in csv.DictReader(open(sys.argv[1] if len(sys.argv) > 1 else "results/phases.csv")):
+for r in csv.DictReader(open(sys.argv[1] if len(sys.argv) > 1 else "results/variants/phases-O0.csv")):
     k = (r["workload"], int(r["threads"]))
     for p in P + ["total"]: d[k][p].append(float(r[p]))
 print("| workload | thr | total | " + " | ".join(P) + " | acc % | build % |")

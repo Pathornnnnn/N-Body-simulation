@@ -13,9 +13,10 @@ OUT=${OUT:-results/times.csv}
 TMPOUT=$(mktemp)
 
 export OMP_PROC_BIND=close OMP_PLACES=cores
-mkdir -p inputs results
-lscpu > results/lscpu.txt 2>&1
-getconf LEVEL1_DCACHE_LINESIZE > results/cacheline.txt 2>&1
+OUTDIR=$(dirname "$OUT")   # machine info goes next to the CSV
+mkdir -p inputs "$OUTDIR"
+lscpu > "$OUTDIR/lscpu.txt" 2>&1
+getconf LEVEL1_DCACHE_LINESIZE > "$OUTDIR/cacheline.txt" 2>&1
 
 for w in $WORKLOADS; do
   n=${w#*:}
